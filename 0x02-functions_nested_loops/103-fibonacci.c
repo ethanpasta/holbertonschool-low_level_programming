@@ -21,4 +21,5 @@ int main(void)
 		b = c;
 	}
 	printf("%lld\n", sum);
+	return (0);
 }
