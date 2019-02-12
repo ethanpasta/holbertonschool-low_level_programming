@@ -12,7 +12,7 @@ int main(void)
 	long a = 1, b = 2, c;
 	long sum = 2;
 
-	for (i = 0; i < 28; i++)
+	for (i = 0; i < 30; i++)
 	{
 		c = a + b;
 		if ((c % 2) == 0)
