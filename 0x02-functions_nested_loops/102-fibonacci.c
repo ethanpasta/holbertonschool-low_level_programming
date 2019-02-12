@@ -8,13 +8,17 @@
  */
 int main(void)
 {
-	long n1 = 1, n2 = 2, next, i;
-	for (i = 0; i < 25; i++)
+	int i;
+	long a = 1, b = 2, c;
+
+	printf("%lu, %lu", a, b);
+	for (i = 0; i < 48; i++)
 	{
-		printf("%lu, %lu, ", n1, n2);
-		next = n1 + n2;
-		n1 = next;
-		n2 = next + n2;
+		c = a + b;
+		printf(", %lu", c);
+		a = b;
+		b = c;
 	}
+	putchar('\n');
 	return (0);
 }
