@@ -1,26 +1,24 @@
-#include "holberton.h"
 #include <stdio.h>
+#include "holberton.h"
 
 /**
- * main - check the code for Holberton School students.
+ * main - entry point
  *
- * Return: Always 0.
+ * Return: exit of the main program
  */
 int main(void)
 {
-	int n1 = 1, n2 = 2, tmp, i;
-	long sum = 0;
+	int i;
+	long a = 1, b = 2, c;
+	long long sum = 2;
 
-	for (i = 0; i < 15; i++)
+	for (i = 0; i < 28; i++)
 	{
-		if (n1 % 2 == 0)
-			sum += n1;
-		if (n2 % 2 == 0)
-			sum += n2;
-		tmp = n1 + n2;
-		n1 = tmp;
-		n2 = tmp + n2;
+		c = a + b;
+		if ((c % 2) == 0)
+			sum += c;
+		a = b;
+		b = c;
 	}
-	printf("%lu\n", sum);
-	return (0);
+	printf("%lld\n", sum);
 }
