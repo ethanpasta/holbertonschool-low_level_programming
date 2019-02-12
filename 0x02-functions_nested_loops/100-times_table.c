@@ -1,12 +1,16 @@
 #include "holberton.h"
 
-/* Function prints n times table */
+/**
+ * print_times_table - Function that prints the n times table, starting with 0.
+ * @n: the times table limit
+ *
+ */
 void print_times_table(int n)
 {
 	int row, col, tmp;
 
 	if ((n < 0) || (n > 15))
-	    return;
+		return;
 	for (row = 0; row <= n; row++)
 	{
 		tmp = row;
