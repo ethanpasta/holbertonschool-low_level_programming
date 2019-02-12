@@ -10,7 +10,7 @@ int main(void)
 {
 	int i;
 	long a = 1, b = 2, c;
-	long long sum = 2;
+	long sum = 2;
 
 	for (i = 0; i < 28; i++)
 	{
@@ -20,6 +20,6 @@ int main(void)
 		a = b;
 		b = c;
 	}
-	printf("%lld\n", sum);
+	printf("%lu\n", sum);
 	return (0);
 }
