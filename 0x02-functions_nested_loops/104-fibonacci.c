@@ -24,7 +24,7 @@ int main(void)
 	n12 = a % split;
 	n21 = b / split;
 	n22 = b % split;
-	for (i = 1; i <= 7; i++)
+	for (i = 1; i <= 8; i++)
 	{
 		sum1 = n11 + n21 + ((n12 + n22) / split);
 		sum2 = (n12 + n22) % split;
