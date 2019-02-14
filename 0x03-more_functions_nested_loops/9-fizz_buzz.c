@@ -2,6 +2,8 @@
 
 /**
  * main - Entry point
+ *
+ * Return: exit value
  */
 int main(void)
 {
