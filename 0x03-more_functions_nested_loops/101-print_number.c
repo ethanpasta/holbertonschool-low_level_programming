@@ -11,7 +11,7 @@ void print_number(int n)
 	{
 		_putchar('-');
 		n /= 10;
-		print_number(21478364);
+		print_number(214748364);
 		_putchar('8');
 		return;
 	}
