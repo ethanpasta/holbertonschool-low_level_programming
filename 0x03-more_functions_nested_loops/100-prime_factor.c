@@ -13,7 +13,8 @@ int main(void)
 
 	for (i = 3; i <= sqrt(n); i += 2)
 	{
-		while (n % i == 0) {
+		while (n % i == 0)
+		{
 			maxPrime = i;
 			n = n / i;
 		}
