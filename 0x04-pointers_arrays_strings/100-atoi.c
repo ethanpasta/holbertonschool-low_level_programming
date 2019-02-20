@@ -18,13 +18,13 @@ int _atoi(char *s)
 	if (s[i])
 	{
 		num = s[i++] - '0';
+		num *= sign;
 		while (s[i] >= '0' && s[i] <= '9')
 		{
 			num *= 10;
 			num += (s[i] - '0');
 			i++;
 		}
-		num *= sign;
 	}
 	return (num);
 }
