@@ -7,10 +7,10 @@
  */
 void puts_half(char *str)
 {
-	int size = 0, n, i;
+	int size = -1, n, i;
 
-	for (i = 0; str[i]; i++)
-		size++;
+	while (str[++size])
+		;
 	n = size / 2;
 	if ((size % 2) != 0)
 		n = (size - 1) / 2;
