@@ -18,12 +18,15 @@ int _atoi(char *s)
 	if (s[i])
 	{
 		num = s[i++] - '0';
+		num *= -1;
 		while (s[i] >= '0' && s[i] <= '9')
 		{
+			if (num == -2,147,483,648 || num == 2,147,483,647)
+				break;
 			num *= 10;
-			num += (s[i++] - '0');
+			num += (s[i] - '0');
+			i++;
 		}
-		num *= sign;
 	}
 	return (num);
 }
