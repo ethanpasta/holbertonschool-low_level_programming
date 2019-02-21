@@ -1,7 +1,7 @@
 #include "holberton.h"
 
 /**
- * _strat - function that concatenates two strings
+ * _strcat - function that concatenates two strings
  * @dest: string to append to
  * @src: string to append
  *
