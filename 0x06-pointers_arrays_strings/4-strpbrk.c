@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "holberton.h"
 
 /**
@@ -24,5 +25,5 @@ char *_strpbrk(char *s, char *accept)
 		}
 		s++;
 	}
-	return (s);
+	return (NULL);
 }
