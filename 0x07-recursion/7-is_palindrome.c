@@ -1,6 +1,20 @@
 #include "holberton.h"
 
 /**
+ * _strlen_recursion - function prints string length
+ * @s: string
+ *
+ * Return: string length
+ */
+int _strlen_recursion(char *s)
+{
+        if (*s)
+                return (_strlen_recursion(s + 1) + 1);
+        else
+                return (0);
+}
+
+/**
  * check_palindrome - function checks if string is a palindrome
  * using positions
  * @s: string
