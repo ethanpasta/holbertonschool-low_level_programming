@@ -36,10 +36,12 @@ int check_palindrome(char *s, int beg, int end)
  * is_palindrome - functions checks if string is palindrome
  * @s: string to check
  *
- * Return: 1 if it is, 0 otherwise
+ * Return: 1 if palindrome, 0 otherwise
  */
 int is_palindrome(char *s)
 {
+	if (*s == '\0')
+		return (1);
 	int end = _strlen_recursion(s) - 1;
 	int pal = check_palindrome(s, 0, end);
 
