@@ -40,7 +40,5 @@ int is_palindrome(char *s)
 {
 	if (s == '\0')
 		return (1);
-	int end = lenS(s) - 1;
-
-	return (check_palindrome(s, 0, end));
+	return (check_palindrome(s, 0, lenS(s) - 1));
 }
