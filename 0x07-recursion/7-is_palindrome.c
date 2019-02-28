@@ -1,19 +1,6 @@
 #include "holberton.h"
 
 /**
- * str_len - function returns length of string
- * @s: string to check
- *
- * Return: none
- */
-int str_len(char *s)
-{
-	if (!*s)
-		return (0);
-	return (str_len(s + 1) + 1);
-}
-
-/**
  * check_palindrome - function checks if a string is a palindrome
  * @beg: beginning position
  * @end: last position
@@ -40,7 +27,7 @@ int is_palindrome(char *s)
 {
 	if (*s == '\0')
 		return (1);
-	int len = str_len(s) - 1;
+	int len = _strlen_recursion(s) - 1;
 
 	return (check_palindrome(s, 0, len));
 }
