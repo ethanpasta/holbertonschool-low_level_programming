@@ -17,11 +17,6 @@ int main(int argc, char *argv[])
 	}
 	int cents = 0, change = atoi(argv[1]);
 
-	if (change < 0)
-	{
-		printf("0\n");
-		return (0);
-	}
 	while (change >= 25)
 	{
 		cents += 1;
@@ -42,7 +37,7 @@ int main(int argc, char *argv[])
 		cents += 1;
 		change -= 2;
 	}
-	if (change != 0)
+	if (change >= 1)
 		cents += 1;
 	printf("%d\n", cents);
 	return (0);
