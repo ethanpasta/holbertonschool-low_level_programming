@@ -2,15 +2,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/**
+ * contain_c - function checks if string contains letters
+ * @s: string to check
+ *
+ * Return: 1 if contains, 0 otherwise
+ */
 int contain_c(char *s)
 {
 	while (*s)
 	{
 		if (*s < '0' || *s > '9')
-			return 1;
+			return (1);
 		s++;
 	}
-	return 0;
+	return (0);
 }
 
 /**
@@ -36,10 +42,10 @@ int main(int argc, char *argv[])
 		if (contain_c(argv[i]))
 		{
 			printf("Error\n");
-			return 1;
+			return (1);
 		}
 		sum += atoi(argv[i]);
 	}
 	printf("%d\n", sum);
-	return 0;
+	return (0);
 }
