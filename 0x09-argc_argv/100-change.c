@@ -3,8 +3,8 @@
 #include <stdlib.h>
 
 /**
- * coins - calculates and returns the minimum number of coins
- * @n: the change to use
+ * coin - calculates and returns the minimum number of coins
+ * @change: the change to use
  *
  * Return: coin count
  */
