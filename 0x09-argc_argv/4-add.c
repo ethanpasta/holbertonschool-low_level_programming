@@ -3,23 +3,6 @@
 #include <stdlib.h>
 
 /**
- * contain_c - function checks if string contains letters
- * @s: string to check
- *
- * Return: 1 if contains, 0 otherwise
- */
-int contain_c(char *s)
-{
-	while (*s)
-	{
-		if (*s < '0' || *s > '9')
-			return (1);
-		s++;
-	}
-	return (0);
-}
-
-/**
  * main - entry point
  * @argc: number of parameters
  * @argv: array of strings - parameters
@@ -28,7 +11,7 @@ int contain_c(char *s)
  */
 int main(int argc, char *argv[])
 {
-	int i;
+	int i, j;
 
 	if (argc == 1)
 	{
@@ -39,10 +22,13 @@ int main(int argc, char *argv[])
 
 	for (i = 1; i < argc; i++)
 	{
-		if (contain_c(argv[i]))
+		for (j = 0; argv[i][j] != '\0'; j++)
 		{
-			printf("Error\n");
-			return (1);
+			if (argv[i][j] < '0' || argv[i][j] > '9')
+			{
+				printf("Error\n");
+				return (1);
+			}
 		}
 		sum += atoi(argv[i]);
 	}
