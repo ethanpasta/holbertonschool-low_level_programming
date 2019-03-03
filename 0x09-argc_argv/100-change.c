@@ -17,28 +17,20 @@ int main(int argc, char *argv[])
 	}
 	int cents = 0, change = atoi(argv[1]);
 
-	while (change >= 25)
+	while (change > 0)
 	{
-		cents += 1;
-		change -= 25;
+		if (change >= 25)
+			change -= 25;
+		else if (change >= 10)
+			change -= 10;
+		else if (change >= 5)
+			change -= 5;
+		else if (change >= 2)
+			change -= 2;
+		else if (change >= 1)
+			change -= 1;
+		cents++;
 	}
-	while (change >= 10)
-	{
-		cents += 1;
-		change -= 10;
-	}
-	while (change >= 5)
-	{
-		cents += 1;
-		change -= 5;
-	}
-	while (change >= 2)
-	{
-		cents += 1;
-		change -= 2;
-	}
-	if (change >= 1)
-		cents += 1;
 	printf("%d\n", cents);
 	return (0);
 }
