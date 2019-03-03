@@ -3,53 +3,53 @@
 #include <stdlib.h>
 
 /**
- * returnCents - calculates the min number of coins needed to make change given
- * @n: target change value
- * Return: min num of coins
+ * coins - calculates and returns the minimum number of coins
+ * @n: the change to use
+ *
+ * Return: coin count
  */
-int returnCents(int n)
+int coin(int change)
 {
 	int coins = 0;
 
-	while (n)
+	while (change)
 	{
-		if (n >= 25)
-			n -= 25;
-		else if (n >= 10)
-			n -= 10;
-		else if (n >= 5)
-			n -= 5;
-		else if (n >= 2)
-			n -= 2;
-		else if (n >= 1)
-			n -= 1;
+		if (change >= 25)
+			change -= 25;
+		else if (change >= 10)
+			change -= 10;
+		else if (change >= 5)
+			change -= 5;
+		else if (change >= 2)
+			change -= 2;
+		else if (change >= 1)
+			change -= 1;
 		coins++;
 	}
 	return (coins);
 }
 
 /**
- * main - prints the minimum number of coins to
- * make change for an amount of money
- * @argc: argument count
- * @argv: argument vector
- * Return: 0 if no errors
+ * main - entry point
+ * @argc: number of arguments
+ * @argv: array of parameters
+ * Return: exit value
  */
-int main(int argc, char **argv)
+int main(int argc, char *argv[])
 {
-	int number;
+	int change;
 
 	if (argc != 2)
 	{
 		printf("Error\n");
 		return (1);
 	}
-	number = atoi(argv[1]);
-	if (number < 0)
+	change = atoi(argv[1]);
+	if (change < 0)
 	{
 		printf("0\n");
 		return (0);
 	}
-	printf("%i\n", returnCents(number));
+	printf("%d\n", coin(change));
 	return (0);
 }
