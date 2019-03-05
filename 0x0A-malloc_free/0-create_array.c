@@ -7,6 +7,7 @@
  * @size: size of the array to create
  * @c: char to copy
  *
+ * Return: pointer to array, null if failed
  */
 char *create_array(unsigned int size, char c)
 {
