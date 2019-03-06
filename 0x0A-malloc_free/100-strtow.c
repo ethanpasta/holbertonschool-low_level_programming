@@ -3,6 +3,31 @@
 #include <stdlib.h>
 
 /**
+ * word_count - function counts amount of words
+ * seperated by space
+ * @s: string to check
+ *
+ * Return: number of words
+ */
+int word_count(char *s)
+{
+	int c = 0, i = 0;
+
+	while (s[i])
+	{
+		if (s[i] != ' ')
+		{
+			c++;
+			while (s[i] && s[i] != ' ')
+				i++;
+		}
+		else
+			i++;
+	}
+	return (c);
+}
+
+/**
  * strtow - function splits a string into words
  * @str: string to split up
  *
@@ -15,17 +40,9 @@ char **strtow(char *str)
 
 	if (str == NULL || *str == '\0')
 		return (NULL);
-	while (str[i])
-	{
-		if (str[i] != ' ')
-		{
-			words++;
-			while (str[i] != ' ' && str[i])
-				i++;
-		}
-		else
-			i++;
-	}
+	words = word_count(str);
+	if (words == 0)
+		return (NULL);
 	a = (char **)malloc(sizeof(char *) * (words + 1));
 	if (!a)
 		return (NULL);
