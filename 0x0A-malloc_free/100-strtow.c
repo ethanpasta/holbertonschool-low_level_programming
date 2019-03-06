@@ -47,7 +47,7 @@ char **strtow(char *str)
 	if (!a)
 		return (NULL);
 	j = 0;
-	for (i = 0; i < words; i++)
+	for (i = 0; i <= words; i++)
 	{
 		size = 0;
 		while (str[pos] == ' ')
