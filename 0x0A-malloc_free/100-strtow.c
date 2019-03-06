@@ -26,7 +26,7 @@ char **strtow(char *str)
 		else
 			i++;
 	}
-	a = (char **)malloc(sizeof(char *) * words);
+	a = (char **)malloc(sizeof(char *) * (words + 1));
 	if (!a)
 		return (NULL);
 	j = 0;
@@ -38,13 +38,13 @@ char **strtow(char *str)
 		tmp = pos;
 		while (str[pos++] != ' ')
 			size++;
-		size++;
-		a[i] = malloc(sizeof(char) * size);
+		a[i] = malloc(sizeof(char) * (size + 1));
 		if (!a[i])
 		{
 			while (i--)
 				free(a[i]);
 			free(a);
+			return (NULL);
 		}
 		for (j = 0; j < size; j++)
 		{
