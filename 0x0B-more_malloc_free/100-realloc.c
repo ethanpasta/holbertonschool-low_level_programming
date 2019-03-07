@@ -13,15 +13,17 @@
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
 	unsigned int i = 0;
-	char *newptr, *oldptr;
+	char *newptr, *oldptr = ptr;
 
 	if (new_size == old_size)
 		return (ptr);
 	if (new_size == 0 && ptr)
+	{
 		return (NULL);
+		free(ptr);
+	}
 	if (!ptr)
 		return (malloc(new_size));
-	oldptr = ptr;
 	newptr = malloc(new_size);
 	while (i < old_size && i < new_size)
 	{
