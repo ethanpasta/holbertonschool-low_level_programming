@@ -1,5 +1,22 @@
-0x08. C - Static libraries
-Creation of static libraries.
+# 0x08. C - Static libraries
 
- - libholberton.a - static library containting different C functions
- - create_static_lib.sh - shell script that creates a static library
+## Description
+What you should learn from this project:
+
+* What is a static library, how does it work, how to create one, and how to use it
+* Basic usage of ar, ranlib, nm
+
+---
+
+### [0. A library is not a luxury but one of the necessities of life](./libholberton.a)
+* Create the static library libholberton.a containing all the functions listed below:
+
+
+### [1. Without libraries what have we? We have no past and no future](./create_static_lib.sh)
+* Create a script called create_static_lib.sh that creates a static library called liball.a from all the .c files that are in the current directory.
+
+
+---
+
+## Author
+* **Ethan Mayer** - [ethanpasta](https://github.com/ethanpasta)
