@@ -1,29 +1,37 @@
 # 0x0B. C - More malloc, free
-### Learning Objectives
+
+## Description
+What you should learn from this project:
+
 * How to use the exit function
 * What are the functions calloc and realloc from the standard library and how to use them
-### Tasks
-0. Trust no one
-a function that allocates memory using malloc
 
-**function prototype:** void *malloc_checked(unsigned int b)
+---
 
-1. string _nconcat
-a function that concatenates two strings
+### [0. Trust no one](./0-malloc_checked.c)
+* Write a function that allocates memory using malloc.
 
-**function prototype:** char *string_nconcat(char *s1, char *s2, unsigned int n)
 
-2. _calloc
-a function that allocates memory for an array, using malloc
+### [1. string_nconcat](./1-string_nconcat.c)
+* Write a function that concatenates two strings.
 
-**function prototype:** void *_calloc(unsigned int nmemb, unsigned int size)
 
-3. array_range
-a function that creates an array of integers
+### [2. _calloc](./2-calloc.c)
+* Write a function that allocates memory for an array, using malloc.
 
-**function prototype:** int *array_range(int min, int max)
 
-4. _ralloc
-a function that reallocates a memory block using malloc and free
+### [3. array_range](./3-array_range.c)
+* Write a function that creates an array of integers.
 
-**function prototype:** void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
+
+### [4. _realloc](./100-realloc.c)
+* Write a function that reallocates a memory block using malloc and free
+
+
+### [5. We must accept finite disappointment, but never lose infinite hope](./101-mul.c)
+* Write a program that multiplies two positive numbers.
+
+---
+
+## Author
+* **Ethan Mayer** - [ethanpasta](https://github.com/ethanpasta)
