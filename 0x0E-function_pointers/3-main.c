@@ -29,4 +29,5 @@ int main(int argc, char **argv)
 	fun = get_op_func(ch);
 	result = fun(num1, num2);
 	printf("%d\n", result);
+	return (0);
 }
