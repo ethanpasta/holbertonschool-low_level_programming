@@ -1,7 +1,11 @@
 #ifndef VARIADIC_H
 #define VARIADIC_H
-#include <stdarg.h>
 
+/**
+ * struct type_st - struct holds character, and pointer function
+ * @c: character
+ * @f: pointer to function
+ */
 typedef struct type_st
 {
 	char c;
