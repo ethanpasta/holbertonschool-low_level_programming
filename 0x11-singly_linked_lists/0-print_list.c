@@ -9,16 +9,17 @@
  */
 size_t print_list(const list_t *h)
 {
-	size_t i = 0;
+	const list_t *s;
+	unsigned int i;
 
-	while (h)
+	s = h;
+	for (i = 0; s; i++)
 	{
-		if (h->str)
-			printf("[%d] [%s]\n", h->len, h->str);
+		if (!s->str)
+			printf("[%u] %s\n", s->len, "(nil)");
 		else
-			printf("[0] (nil)\n");
-		i++;
-		h = h->next;
+			printf("[%u] %s\n", s->len, s->str);
+		s = s->next;
 	}
 	return (i);
 }
