@@ -1,4 +1,4 @@
-B#include "lists.h"
+#include "lists.h"
 
 /**
  * print_list - function prints all the elements
