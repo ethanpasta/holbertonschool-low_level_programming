@@ -2,6 +2,25 @@
 #include <stdlib.h>
 
 /**
+ * listint_len - function returns the number of
+ * elements in a linked listint_t list
+ * @h: head of list
+ *
+ * Return: number of elements
+ */
+size_t listint_len(const listint_t *h)
+{
+	size_t count = 0;
+
+	while (h)
+	{
+		count++;
+		h = h->next;
+	}
+	return (count);
+}
+
+/**
  * insert_nodeint_at_index - function inserts a new node at
  * a given position
  * @head: head of list
@@ -12,38 +31,35 @@
  */
 listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 {
-	listint_t *tmp, *new;
+	listint_t *new, *tmp = *head;
 
-	if (!head)
+	if (idx > listint_len(*head))
 		return (NULL);
-	tmp = *head;
-	if (!idx)
+	else if (idx == 0)
 	{
 		new = malloc(sizeof(listint_t));
+		if (!new)
+			return (NULL);
 		new->n = n;
 		new->next = *head;
 		*head = new;
-		return (new);
-	}
-	while (--idx && tmp)
-	{
-		tmp = tmp->next;
-	}
-	if (!tmp)
-		return (NULL);
-	new = malloc(sizeof(listint_t));
-	if (!new)
-		return (NULL);
-	new->n = n;
-	if (tmp->next)
-	{
-		new->next = tmp->next;
-		tmp->next = new;
 	}
 	else
 	{
-		new->next = NULL;
-		tmp->next = new;
+		while (idx--)
+		{
+			if (idx == 0)
+			{
+				new = malloc(sizeof(listint_t));
+				if (!new)
+					return (NULL);
+				new->n = n;
+				new->next = tmp->next;
+				tmp->next = new;
+			}
+			else
+				tmp = tmp->next;
+		}
 	}
 	return (new);
 }
