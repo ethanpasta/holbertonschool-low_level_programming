@@ -11,7 +11,7 @@ int set_bit(unsigned long int *n, unsigned int index)
 {
 	int bit;
 
-	if (!n)
+	if (!n || index > 31)
 		return (-1);
 	bit = 1 << index;
 	*n = *n | bit;
