@@ -51,7 +51,7 @@ void close_err(int f)
  */
 int main(int argc, char **argv)
 {
-	int f1, f2, reed, written, flag = 1, closepls;
+	int f1, f2, reed, written, closepls;
 	char buffer[1024];
 
 	if (argc != 3)
@@ -69,17 +69,14 @@ int main(int argc, char **argv)
 		if (f2 < 0)
 			write_err(argv[2]);
 	}
-	while (flag)
-	{
+	do {
 		reed = read(f1, buffer, 1024);
 		if (reed < 0)
 			read_err(argv[1]);
 		written = write(f2, buffer, reed);
 		if (written < 0)
 			write_err(argv[2]);
-		if (reed == 0)
-			flag = 0;
-	}
+	} while (reed > 0);
 	closepls = close(f1);
 	if (closepls < 0)
 		close_err(f1);
