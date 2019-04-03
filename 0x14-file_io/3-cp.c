@@ -69,14 +69,14 @@ int main(int argc, char **argv)
 		if (f2 < 0)
 			write_err(argv[2]);
 	}
-	do {
-		reed = read(f1, buffer, 1024);
-		if (reed < 0)
-			read_err(argv[1]);
+	while ((reed = read(f1, buffer, 1024)) > 0)
+	{
 		written = write(f2, buffer, reed);
 		if (written < 0)
 			write_err(argv[2]);
-	} while (reed > 0);
+	}
+	if (reed == -1)
+		read_err(argv[1]);
 	closepls = close(f1);
 	if (closepls < 0)
 		close_err(f1);
