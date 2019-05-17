@@ -2,3 +2,6 @@
 	path = 0x18-stacks_queues_lifo_fifo
 	url = https://github.com/ethanpasta/monty
 	branch = master
+[submodule "0x15-simple_shell"]
+	path = 0x15-simple_shell
+	url = https://github.com/ethanpasta/simple_shell
