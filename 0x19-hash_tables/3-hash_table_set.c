@@ -65,7 +65,6 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	if (!key || !*key || !ht || !value)
 		return (0);
 	index = key_index((unsigned char *)key, ht->size);
-	k = strdup(key);
 	v = strdup(value);
 	exists = overwrite_key(ht->array[index], key);
 	if (exists != -1)
@@ -79,6 +78,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		new = malloc(sizeof(hash_node_t));
 		if (!new)
 			return (0);
+		k = strdup(key);
 		new->key = k;
 		new->value = v;
 		new->next = ht->array[index];
