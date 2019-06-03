@@ -4,7 +4,7 @@
 #include <string.h>
 
 /**
- * get_nodeint_at_index - function returns the nth
+ * getnode_index - function returns the nth
  * node of a listint_t linked list
  * @head: head of list
  * @index: index of node to find
