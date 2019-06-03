@@ -23,7 +23,7 @@ void hash_table_print(const hash_table_t *ht)
 		while (tmpL)
 		{
 			if (comma)
-				printf(", idx: %lu : '%s': '%s'", i, tmpL->key, tmpL->value);
+				printf(", '%s': '%s'", tmpL->key, tmpL->value);
 			else
 			{
 				comma = 1;
