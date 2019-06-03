@@ -4,6 +4,30 @@
 #include <string.h>
 
 /**
+ * get_nodeint_at_index - function returns the nth
+ * node of a listint_t linked list
+ * @head: head of list
+ * @index: index of node to find
+ *
+ * Return: address of node, or NULL on failure
+ */
+hash_node_t *getnode_index(hash_node_t *head, unsigned int index)
+{
+	unsigned int i = 0;
+
+	if (!head)
+		return (NULL);
+	while (i != index && head)
+	{
+		i++;
+		head = head->next;
+	}
+	if (i != index)
+		return (NULL);
+	return (head);
+}
+
+/**
  * overwrite_key - function checks if a key already exists in the hash table
  * @h: head of list
  * @key: key to search for
@@ -50,7 +74,15 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		free(new->value);
 		new->value = v;
 	}
-	else if (add_node(&ht->array[index], k, v) == NULL)
-		return (0);
+	else
+	{
+		new = malloc(sizeof(hash_node_t));
+		if (!new)
+			return (0);
+		new->key = k;
+		new->value = v;
+		new->next = ht->array[index];
+		ht->array[index] = new;
+	}
 	return (1);
 }
