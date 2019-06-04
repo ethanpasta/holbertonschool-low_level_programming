@@ -97,7 +97,7 @@ void insert_sorted_list(shash_table_t *table, shash_node_t *new)
 	}
 	else
 	{
-		while (tmp->snext && strcmp(tmp->snext->key, new->key) < 0)
+		while (tmp->snext && strcmp(tmp->snext->key, new->key) <= 0)
 			tmp = tmp->snext;
 		if (tmp->snext == NULL)
 		{
@@ -110,6 +110,7 @@ void insert_sorted_list(shash_table_t *table, shash_node_t *new)
 			new->snext = tmp->snext;
 			new->sprev = tmp;
 			tmp->snext->sprev = new;
+			tmp->snext = new;
 		}
 	}
 }
