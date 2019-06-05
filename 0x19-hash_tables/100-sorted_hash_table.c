@@ -11,111 +11,51 @@
  */
 shash_table_t *shash_table_create(unsigned long int size)
 {
-	unsigned long int i;
 	shash_table_t *table;
 
-	table = malloc(sizeof(shash_table_t));
+	table = calloc(1, sizeof(shash_table_t));
+	table->size = size;
 	if (!table)
 		return (NULL);
-	table->array = malloc(sizeof(shash_node_t *) * size);
+	table->array = calloc(size, sizeof(shash_node_t *));
 	if (!table->array)
 	{
 		free(table);
 		return (NULL);
 	}
-	table->size = size;
-	for (i = 0; i < size; i++)
-		table->array[i] = NULL;
-	table->shead = NULL;
-	table->stail = NULL;
 	return (table);
 }
 
 /**
- * soverwrite_key - function checks if a key already exists in the hash table
- * @h: head of list
- * @key: key to search for
- *
- * Return: index of key in list, or -1 if it doesn't exist
- */
-int soverwrite_key(shash_node_t *h, const char *key)
-{
-	int i;
-
-	for (i = 0; h; i++)
-	{
-		if (strcmp(h->key, key) == 0)
-			return (i);
-		h = h->next;
-	}
-	return (-1);
-}
-
-/**
- * sgetnode_index - function returns the nth
- * node of a listint_t linked list
- * @head: head of list
- * @index: index of node to find
- *
- * Return: address of node, or NULL on failure
- */
-shash_node_t *sgetnode_index(shash_node_t *head, unsigned int index)
-{
-	unsigned int i = 0;
-
-	if (!head)
-		return (NULL);
-	while (i != index && head)
-	{
-		i++;
-		head = head->next;
-	}
-	if (i != index)
-		return (NULL);
-	return (head);
-}
-
-/**
  * insert_sorted_list - functions adds node 'new' to sorted list
- * @table: hash table
+ * @ht: hash table
  * @new: node to add
  *
  * Return: none
  */
-void insert_sorted_list(shash_table_t *table, shash_node_t *new)
+void insert_sorted_list(shash_table_t *ht, shash_node_t *new)
 {
-	shash_node_t *tmp = table->shead;
+	shash_node_t *head = ht->shead;
 
-	if (!table->shead)
+	if (!head || strcmp(head->key, new->key) >= 0)
 	{
-		table->shead = new;
-		table->stail = new;
+		new->snext = head;
+		ht->shead = new;
+		if (head)
+			head->sprev = new;
+		else
+			ht->stail = new;
 		return;
 	}
-	if (strcmp(table->shead->key, new->key) >= 0)
-	{
-		table->shead->sprev = new;
-		new->snext = table->shead;
-		table->shead = new;
-	}
+	while (head->snext && strcmp(head->snext->key, new->key) <= 0)
+		head = head->snext;
+	new->sprev = head;
+	new->snext = head->snext;
+	if (!head->snext)
+		ht->stail = new;
 	else
-	{
-		while (tmp->snext && strcmp(tmp->snext->key, new->key) <= 0)
-			tmp = tmp->snext;
-		if (tmp->snext == NULL)
-		{
-			new->sprev = tmp;
-			tmp->snext = new;
-			table->stail = new;
-		}
-		else
-		{
-			new->snext = tmp->snext;
-			new->sprev = tmp;
-			tmp->snext->sprev = new;
-			tmp->snext = new;
-		}
-	}
+		head->snext->sprev = new;
+	head->snext = new;
 }
 
 /**
@@ -132,7 +72,7 @@ int add_new_node(shash_table_t *ht, unsigned long int idx, char *k, char *v)
 {
 	shash_node_t *new;
 
-	new = malloc(sizeof(shash_node_t));
+	new = calloc(1, sizeof(shash_node_t));
 	if (!new)
 	{
 		shash_table_delete(ht);
@@ -140,8 +80,6 @@ int add_new_node(shash_table_t *ht, unsigned long int idx, char *k, char *v)
 	}
 	new->key = k;
 	new->value = v;
-	new->sprev = NULL;
-	new->snext = NULL;
 	new->next = ht->array[idx];
 	ht->array[idx] = new;
 	insert_sorted_list(ht, new);
@@ -160,8 +98,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int index;
 	char *v, *k;
-	shash_node_t *new;
-	int exists;
+	shash_node_t *h;
 
 	if (!key || !*key || !ht || !value)
 		return (0);
@@ -172,23 +109,29 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 		shash_table_delete(ht);
 		return (0);
 	}
-	exists = soverwrite_key(ht->array[index], key);
-	if (exists != -1)
+	h = ht->array[index];
+	while (h)
 	{
-		new = sgetnode_index(ht->array[index], exists);
-		free(new->value);
-		new->value = v;
-	}
-	else
-	{
-		k = strdup(key);
-		if (!k)
+		if (!strcmp(h->key, key))
 		{
-			shash_table_delete(ht);
-			return (0);
+			free(h->value);
+			h->value = v;
+			return (1);
 		}
-		if (add_new_node(ht, index, k, v) == 0)
-			return (0);
+		h = h->next;
+	}
+	k = strdup(key);
+	if (!k)
+	{
+		free(v);
+		shash_table_delete(ht);
+		return (0);
+	}
+	if (!add_new_node(ht, index, k, v))
+	{
+		free(k);
+		free(v);
+		return (0);
 	}
 	return (1);
 }
