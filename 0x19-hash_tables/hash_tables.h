@@ -91,5 +91,6 @@ void shash_table_delete(shash_table_t *ht);
 shash_node_t *sgetnode_index(shash_node_t *head, unsigned int index);
 int soverwrite_key(shash_node_t *h, const char *key);
 void insert_sorted_list(shash_table_t *table, shash_node_t *new);
+int add_new_node(shash_table_t *ht, unsigned long int idx, char *k, char *v);
 
 #endif /* HASH_H */
