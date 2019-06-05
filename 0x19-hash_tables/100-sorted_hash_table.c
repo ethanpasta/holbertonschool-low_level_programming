@@ -119,6 +119,36 @@ void insert_sorted_list(shash_table_t *table, shash_node_t *new)
 }
 
 /**
+ * add_new_node - function adds a new node to the hash table array
+ * at a certain index
+ * @ht: the hash table struct
+ * @idx: index in array to add node
+ * @k: key
+ * @v: value
+ *
+ * Return: 1 on success, 0 otherwise
+ */
+int add_new_node(shash_table_t *ht, unsigned long int idx, char *k, char *v)
+{
+	shash_node_t *new;
+
+	new = malloc(sizeof(shash_node_t));
+	if (!new)
+	{
+		shash_table_delete(ht);
+		return (0);
+	}
+	new->key = k;
+	new->value = v;
+	new->sprev = NULL;
+	new->snext = NULL;
+	new->next = ht->array[idx];
+	ht->array[idx] = new;
+	insert_sorted_list(ht, new);
+	return (1);
+}
+
+/**
  * shash_table_set - function adds an element to the hash table
  * @ht: the hash table
  * @key: the key
@@ -151,25 +181,14 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	}
 	else
 	{
-		new = malloc(sizeof(shash_node_t));
-		if (!new)
-		{
-			shash_table_delete(ht);
-			return (0);
-		}
 		k = strdup(key);
 		if (!k)
 		{
 			shash_table_delete(ht);
 			return (0);
 		}
-		new->key = k;
-		new->value = v;
-		new->sprev = NULL;
-		new->snext = NULL;
-		new->next = ht->array[index];
-		ht->array[index] = new;
-		insert_sorted_list(ht, new);
+		if (add_new_node(ht, index, k, v) == 0)
+			return (0);
 	}
 	return (1);
 }
