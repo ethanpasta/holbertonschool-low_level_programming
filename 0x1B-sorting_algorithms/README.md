@@ -38,6 +38,9 @@ Files | Description
 
 
 ## Authors
-Laura Roudge
-Ethan Mayer
+
+[Laura Roudge](https://github.com/lroudge)
+
+[Ethan Mayer](https://github.com/ethanpasta)
+
 Cohort 8 - Holberton School
