@@ -1,4 +1,4 @@
-#!usr/bin/python3
+#!/usr/bin/python3
 """Custom module 5-island_perimeter.py"""
 
 
