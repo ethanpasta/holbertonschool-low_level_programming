@@ -8,5 +8,12 @@ def island_perimeter(grid):
     Args:
        grid: grid
     """
-    perims = sum([sum(grid[i]) for i in range(len(grid))])
-    return ((perims * 2) + 2) if perims != 0 else 0
+    perims = 0
+    for i in range(1, len(grid) - 1):
+        for j in range(1, len(grid[i]) - 1):
+            if grid[i][j] == 1:
+                num_ones = 0
+                num_ones += grid[i - 1][j] + grid[i + 1][j]
+                num_ones += grid[i][j + 1] + grid[i][j - 1]
+                perims += (4 - num_ones)
+    return perims
