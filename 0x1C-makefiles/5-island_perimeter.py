@@ -15,11 +15,11 @@ def island_perimeter(grid):
                 num_ones = 0
                 if i > 0:
                     num_ones += grid[i - 1][j]
-                if i < len(grid) - 1:
+                if i < len(grid):
                     num_ones += grid[i + 1][j]
                 if j > 0:
                     num_ones += grid[i][j + 1]
-                if j < len(grid[i]) - 1:
+                if j < len(grid[i]):
                     num_ones += grid[i][j - 1]
                 perims += (4 - num_ones)
     return perims
