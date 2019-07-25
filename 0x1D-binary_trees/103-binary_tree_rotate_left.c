@@ -33,6 +33,8 @@ binary_tree_t *binary_tree_rotate_left(binary_tree_t *tree)
 
 	if (!tree)
 		return (NULL);
+	if (!tree->right && !tree->left)
+		return (tree);
 	new_root = tree->right;
 	if (new_root->left)
 		tmp_left = new_root->left;
