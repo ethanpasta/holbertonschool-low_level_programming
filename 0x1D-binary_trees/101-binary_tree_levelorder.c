@@ -27,6 +27,8 @@ void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 	binary_tree_t *tmp;
 	int start = 0, size, index = start;
 
+	if (!tree || !func)
+		return;
 	size = binary_tree_size(tree);
 	arr = malloc(sizeof(binary_tree_t *) * size);
 	if (!arr)
