@@ -22,13 +22,12 @@ int every_node_different(binary_tree_t *tree, int value, int diff)
 }
 
 /**
- * binary_tree_is_bst - function checks if a binary tree is a
- * valid binary search tree
- * @tree: pointer to the root
+ * bst_help - function helper for 'binary_tree_is_bst'
+ * @tree: pointer to tree root
  *
  * Return: 1 if valid bst, 0 otherwise
  */
-int binary_tree_is_bst(const binary_tree_t *tree)
+int bst_help(const binary_tree_t *tree)
 {
 	if (!tree)
 		return (1);
@@ -38,7 +37,21 @@ int binary_tree_is_bst(const binary_tree_t *tree)
 	if ((tree->left && tree->left->n >= tree->n) ||
 	    !every_node_different(tree->left, tree->n, 0))
 		return (0);
-	if (!binary_tree_is_bst(tree->left) || !binary_tree_is_bst(tree->right))
+	if (!bst_help(tree->left) || !bst_help(tree->right))
 		return (0);
 	return (1);
+}
+
+/**
+ * binary_tree_is_bst - function checks if a binary tree is a
+ * valid binary search tree
+ * @tree: pointer to the root
+ *
+ * Return: 1 if valid bst, 0 otherwise
+ */
+int binary_tree_is_bst(const binary_tree_t *tree)
+{
+	if (!tree)
+		return (0);
+	return (bst_help(tree));
 }
