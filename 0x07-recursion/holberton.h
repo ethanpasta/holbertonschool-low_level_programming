@@ -9,3 +9,4 @@ int is_prime_number(int n);
 int lenS(char *s);
 int check_palindrome(char *s, int beg, int end);
 int is_palindrome(char *s);
+int wildcmp(char *s1, char *s2);

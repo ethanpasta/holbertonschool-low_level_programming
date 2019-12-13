@@ -1,5 +1,6 @@
 #include "holberton.h"
 #include <stdio.h>
+#include <string.h>
 
 /**
  * main - check the code for Holberton School students.
@@ -14,9 +15,9 @@ int main(void)
 	printf("%d\n", n);
 	n = _atoi("-402");
 	printf("%d\n", n);
-	n = _atoi("          ------++++++-----+++++-- hello       so chool");
+	n = _atoi("          ------++++++-----+++++--98");
 	printf("%d\n", n);
-	n = _atoi("2147483647");
+	n = _atoi("214748364");
 	printf("%d\n", n);
 	n = _atoi("0");
 	printf("%d\n", n);

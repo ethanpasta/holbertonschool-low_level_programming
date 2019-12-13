@@ -24,7 +24,7 @@ int is_divisible(int a, int b)
  */
 int is_prime_number(int n)
 {
-	if (n < 2)
+	if (n < 3 || n % 2 == 0)
 		return (0);
 	return (is_divisible(n, n / 2));
 }

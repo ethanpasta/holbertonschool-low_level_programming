@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <math.h>
+1#include <math.h>
 
 /**
  * main - entry point

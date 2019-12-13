@@ -8,27 +8,23 @@
 int main(void)
 {
 	int i;
-	long a = 1, b = 2, c;
-	long n11, n12, n21, n22, sum1, sum2;
-	long split = 1000000000;
+	long long a = 1, b = 2, c;
+	long long n11, n12, n21, n22, sum1, sum2;
+	long long split = 100000000000000000;
 
-	printf("%lu, %lu", a, b);
-	for (i = 0; i < 88; i++)
-	{
-		c = a + b;
-		printf(", %lu", c);
-		a = b;
-		b = c;
-	}
+	printf("%lld\n%lld\n", a, b);
 	n11 = a / split;
 	n12 = a % split;
 	n21 = b / split;
 	n22 = b % split;
-	for (i = 1; i <= 8; i++)
+	for (i = 0; i <= 200; i++)
 	{
 		sum1 = n11 + n21 + ((n12 + n22) / split);
 		sum2 = (n12 + n22) % split;
-		printf(", %lu%lu", sum1, sum2);
+		if (sum1 != 0)
+			printf("%lld%lld\n", sum1, sum2);
+		else
+			printf("%lld\n", sum2);
 		n11 = n21;
 		n12 = n22;
 		n21 = sum1;
